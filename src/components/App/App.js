@@ -3,6 +3,7 @@ import './App.css';
 import { getUrls } from '../../apiCalls';
 import UrlContainer from '../UrlContainer/UrlContainer';
 import UrlForm from '../UrlForm/UrlForm';
+import { postUrl } from '../../apiCalls';
 
 function App () {
   const [urls, setUrls] = useState([]);
@@ -26,7 +27,7 @@ function App () {
   return (
     <div className='App'>
     <h1>URL Shortener</h1>
-      <UrlForm addUrl={addUrl}/>
+      <UrlForm addUrl={addUrl} setUrls={setUrls} urls={urls}/>
       <UrlContainer urls={urls}/>
     </div>
   );

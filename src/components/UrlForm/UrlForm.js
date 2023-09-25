@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
+import { postUrl } from '../../apiCalls';
 
-function UrlForm({ addUrl }) {
+function UrlForm({ addUrl, setUrls, urls }) {
   const [title, setTitle] = useState('');
   const [long_url, setLong_Url] = useState('');
 
@@ -9,14 +10,20 @@ function UrlForm({ addUrl }) {
     let shortUrl;
     
     const newUrl = {
-      id: Date.now(),
+      // id: Date.now(),
       title,
       long_url,
-      short_url: `http://localhost:3001/useshorturl/${Date.now()}`
+      // short_url: `http://localhost:3001/useshorturl/${Date.now()}`
     }
     // console.log(newUrl, 'this is the new url variable you just made')
-    addUrl(newUrl)
-    clearInputs();
+    // addUrl(newUrl)
+    // clearInputs();
+    postUrl(newUrl)
+      .then(responseData => {
+        console.log(responseData);
+        setUrls([...urls, responseData])
+        clearInputs();
+      })
   }
 
   const clearInputs = () => {
