@@ -10,29 +10,24 @@ function App () {
   useEffect(() => {
     const apiCall = async() => {
       const data = await getUrls()
-      console.log(data)
+      // console.log(data)
       setUrls(data.urls)
+      // console.log(typeof urls, 'this is typeof urls in useEffect')
+      // console.log(urls, 'this is urls in useEffect')
     }
     apiCall()
   }, [])
 
+  const addUrl = (newUrl) => {
+    setUrls([...urls, newUrl])
+    console.log(urls, 'urls in addUrl function')
+  }
+
   return (
     <div className='App'>
     <h1>URL Shortener</h1>
-      <UrlForm />
+      <UrlForm addUrl={addUrl}/>
       <UrlContainer urls={urls}/>
-    {/* <div className="App">
-      jdfnkjds
-      <header>
-        <h1>URL Shortener</h1>
-        <UrlForm />
-      </header>
-
-      <UrlContainer urls={"<<<Urls should go here>>>"}/>
-    </div>
-    <div>
-      hi
-    </div> */}
     </div>
   );
 }

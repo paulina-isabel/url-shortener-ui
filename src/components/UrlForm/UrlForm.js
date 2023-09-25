@@ -1,17 +1,26 @@
 import React, { useState } from 'react';
 
-function UrlForm() {
+function UrlForm({ addUrl }) {
   const [title, setTitle] = useState('');
-  const [urlToShorten, setUrlToShorten] = useState('');
+  const [long_url, setLong_Url] = useState('');
 
   const handleSubmit = e => {
     e.preventDefault();
+    let shortUrl
+    const newUrl = {
+      id: Date.now(),
+      title,
+      long_url,
+      // shortUrl: `http://localhost:3001/useshorturl/${newUrl.id}`
+    }
+    // console.log(newUrl, 'this is the new url variable you just made')
+    addUrl(newUrl)
     clearInputs();
   }
 
   const clearInputs = () => {
     setTitle('');
-    setUrlToShorten('');
+    setLong_Url('');
   }
 
   return (
@@ -21,15 +30,15 @@ function UrlForm() {
         placeholder='Title...'
         name='title'
         value={title}
-        // onChange={e => }
+        onChange={e => setTitle(e.target.value)}
       />
 
       <input
         type='text'
         placeholder='URL to Shorten...'
         name='title'
-        value={title}
-        // onChange={e => }
+        value={long_url}
+        onChange={e => setLong_Url(e.target.value)}
       />
 
       <button onClick={e => handleSubmit(e)}>
