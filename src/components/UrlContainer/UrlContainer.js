@@ -2,11 +2,6 @@ import React from 'react';
 import './UrlContainer.css';
 
 const UrlContainer = ({ urls }) => {
-  // console.log(typeof urls, 'this is typeof urls in container')
-  // console.log(urls, 'this is urls in container')
-
-  console.log(urls, 'urls in UrlContainer')
-
   const urlEls = urls.map(url => {
     return (
       <div className="url" key={url.id}>

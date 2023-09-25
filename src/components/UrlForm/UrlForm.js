@@ -1,26 +1,20 @@
 import React, { useState } from 'react';
 import { postUrl } from '../../apiCalls';
 
-function UrlForm({ addUrl, setUrls, urls }) {
+function UrlForm({ setUrls, urls }) {
   const [title, setTitle] = useState('');
   const [long_url, setLong_Url] = useState('');
 
   const handleSubmit = e => {
     e.preventDefault();
-    let shortUrl;
     
     const newUrl = {
-      // id: Date.now(),
       title,
       long_url,
-      // short_url: `http://localhost:3001/useshorturl/${Date.now()}`
     }
-    // console.log(newUrl, 'this is the new url variable you just made')
-    // addUrl(newUrl)
-    // clearInputs();
+
     postUrl(newUrl)
       .then(responseData => {
-        console.log(responseData);
         setUrls([...urls, responseData])
         clearInputs();
       })
