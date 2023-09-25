@@ -11,19 +11,19 @@ function UrlForm({ setUrls, urls }) {
     const newUrl = {
       title,
       long_url,
-    }
+    };
 
     postUrl(newUrl)
       .then(responseData => {
         setUrls([...urls, responseData])
         clearInputs();
-      })
-  }
+      });
+  };
 
   const clearInputs = () => {
     setTitle('');
     setLong_Url('');
-  }
+  };
 
   return (
     <form>
@@ -47,7 +47,7 @@ function UrlForm({ setUrls, urls }) {
         Shorten Please!
       </button>
     </form>
-  )
-}
+  );
+};
 
 export default UrlForm;

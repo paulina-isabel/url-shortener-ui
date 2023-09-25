@@ -16,7 +16,7 @@ const UrlContainer = ({ urls }) => {
     <section>
       { urlEls.length ? urlEls : <p>No urls yet! Find some to shorten!</p> }
     </section>
-  )
-}
+  );
+};
 
 export default UrlContainer;

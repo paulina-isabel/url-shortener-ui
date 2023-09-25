@@ -13,7 +13,7 @@ function App () {
       setUrls(data.urls)
     }
     apiCall()
-  }, [])
+  }, []);
 
   return (
     <div className='App'>
@@ -22,6 +22,6 @@ function App () {
       <UrlContainer urls={urls}/>
     </div>
   );
-}
+};
 
 export default App;
