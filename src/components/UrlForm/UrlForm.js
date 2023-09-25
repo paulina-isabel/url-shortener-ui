@@ -6,12 +6,13 @@ function UrlForm({ addUrl }) {
 
   const handleSubmit = e => {
     e.preventDefault();
-    let shortUrl
+    let shortUrl;
+    
     const newUrl = {
       id: Date.now(),
       title,
       long_url,
-      // shortUrl: `http://localhost:3001/useshorturl/${newUrl.id}`
+      short_url: `http://localhost:3001/useshorturl/${Date.now()}`
     }
     // console.log(newUrl, 'this is the new url variable you just made')
     addUrl(newUrl)
